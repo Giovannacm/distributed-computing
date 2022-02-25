@@ -1,0 +1,5 @@
+grant codeBase "file:C:/Users/giova/OneDrive/Documentos/Faculdade/CD/Trabalho_Final/computeEngine/" {
+    permission java.net.SocketPermission "localhost:*", "connect, resolve";
+    permission java.net.SocketPermission "localhost:*", "accept";
+    permission java.security.AllPermission;
+};
