@@ -1,0 +1,32 @@
+Considerando que a pasta computeEngine esteja em: CAMINHO = C:\Users\giova\OneDrive\Documentos\Faculdade\CD\Trabalho_Final
+
+Como compilar:
+	- abrir 1 cmd em: CAMINHO\computeEngine
+		-- executar: 
+			--- javac compute/Compute.java compute/Task.java
+			--- jar cvf classes/compute.jar compute/*.class
+			--- javac -cp ./classes/compute.jar;./lib/opencv-3413.jar engine/ComputeEngine.java
+			--- javac -cp ./classes/compute.jar;./lib/opencv-3413.jar server/Server.java server/FaceDetection.java server/EncryptFile.java server/SortFile.java
+			--- javac client/Client.java
+
+Como executar:
+	- abir 1 cmd em: CAMINHO\computeEngine>
+		-- executar:
+			--- set CLASSPATH=CAMINHO\computeEngine
+			--- rmiregistry
+
+	- abrir 1 cmd em: CAMINHO\computeEngine>
+		-- executar:
+			--- java -cp CAMINHO\computeEngine;CAMINHO\computeEngine\classes\compute.jar;CAMINHO\computeEngine\lib\opencv-3413.jar -Djava.library.path=CAMINHO/computeEngine/lib/x64 -Djava.rmi.server.codebase=file:/CAMINHO/computeEngine/classes/compute.jar -Djava.rmi.server.hostname=localhost -Djava.security.policy=server-win.policy engine.ComputeEngine localhost 1099
+	
+	- abrir 1 cmd em: CAMINHO\computeEngine>
+		-- executar:
+			--- java -cp CAMINHO\computeEngine;CAMINHO\computeEngine\classes\compute.jar;CAMINHO\computeEngine\lib\opencv-3413.jar -Djava.library.path=CAMINHO/computeEngine/lib/x64 -Djava.rmi.server.codebase=file:/CAMINHO/computeEngine/classes/ -Djava.security.policy=client-win.policy server.Server 7896 localhost 1099
+
+	- abrir 1 cmd em: CAMINHO\computeEngine>
+		-- executar:
+			--- java client.Client localhost 7896
+
+				---- ComputeFaceDetection image_giovanna.jpg
+				---- ComputeEncryptFile text.txt
+				---- ComputeSortFile numbers.txt
